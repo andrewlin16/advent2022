@@ -1,0 +1,10 @@
+*.swp
+*.swo
+
+bin/
+
+data/*_input.txt
+
+# Added by cargo
+
+/target
