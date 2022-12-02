@@ -14,16 +14,16 @@ enum Outcome {
 
 impl Shape {
     fn from_char(c: char) -> Shape {
-        return match c {
+        match c {
             'A' | 'X' => Shape::Rock,
             'B' | 'Y' => Shape::Paper,
             'C' | 'Z' => Shape::Scissors,
             _ => panic!("invalid Shape"),
-        };
+        }
     }
 
     fn score_against(&self, s: Shape) -> u32 {
-        return (match self {
+        (match self {
             Shape::Rock => match s {
                 Shape::Rock => Outcome::Draw,
                 Shape::Paper => Outcome::Lose,
@@ -39,7 +39,7 @@ impl Shape {
                 Shape::Paper => Outcome::Win,
                 Shape::Scissors => Outcome::Draw,
             },
-        }) as u32;
+        }) as u32
     }
 }
 
