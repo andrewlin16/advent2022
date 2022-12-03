@@ -26,3 +26,7 @@ path = "src/2b.rs"
 [[bin]]
 name = "3a"
 path = "src/3a.rs"
+
+[[bin]]
+name = "3b"
+path = "src/3b.rs"
