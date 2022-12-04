@@ -12,7 +12,10 @@ fn main() {
             heap.push(sum);
             sum = 0;
         } else {
-            let cal: u32 = line.trim().parse().expect("invalid value");
+            let cal: u32 = line
+                .trim()
+                .parse()
+                .expect("calorie value should be numeric");
             sum += cal;
         }
     }
@@ -21,7 +24,7 @@ fn main() {
 
     sum = 0;
     for _ in 0..3 {
-        sum += heap.pop().expect("insufficient elves");
+        sum += heap.pop().expect("should have at least 3 elves from input");
     }
 
     println!("{}", sum);

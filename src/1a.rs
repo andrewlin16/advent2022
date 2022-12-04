@@ -13,7 +13,10 @@ fn main() {
             }
             sum = 0;
         } else {
-            let cal: u32 = line.trim().parse().expect("invalid value");
+            let cal: u32 = line
+                .trim()
+                .parse()
+                .expect("calorie value should be numeric");
             sum += cal;
         }
     }

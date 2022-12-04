@@ -77,8 +77,16 @@ fn main() {
     for line in io::stdin().lines() {
         let line = line.unwrap();
 
-        let opponent = Shape::from_char(line.chars().nth(0).unwrap());
-        let outcome = Outcome::from_char(line.chars().nth(2).unwrap());
+        let opponent = Shape::from_char(
+            line.chars()
+                .nth(0)
+                .expect("strategy guide should have 0th character for opponent's play"),
+        );
+        let outcome = Outcome::from_char(
+            line.chars()
+                .nth(2)
+                .expect("strategy guide should have 2nd character for round outcome"),
+        );
 
         let you = Shape::for_outcome_against(&outcome, &opponent);
         score += you.score_against(&opponent) + you as u32;

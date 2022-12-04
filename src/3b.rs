@@ -17,9 +17,7 @@ fn main() {
     'group_loop: loop {
         // Read and process line 1 of group by adding its contents to a set.
         let mut line = String::new();
-        let num_bytes = io::stdin()
-            .read_line(&mut line)
-            .expect("failed to read input");
+        let num_bytes = io::stdin().read_line(&mut line).unwrap();
         if num_bytes == 0 {
             break;
         }
@@ -32,9 +30,7 @@ fn main() {
 
         // Read and process line 2 of group by paring down set to the common items.
         line.clear();
-        io::stdin()
-            .read_line(&mut line)
-            .expect("failed to read input");
+        io::stdin().read_line(&mut line).unwrap();
         let old_items = items.clone();
         items.clear();
 
@@ -46,9 +42,7 @@ fn main() {
 
         // Read and process line 3 of group by finding common item.
         line.clear();
-        io::stdin()
-            .read_line(&mut line)
-            .expect("failed to read input");
+        io::stdin().read_line(&mut line).unwrap();
         for b in line.bytes() {
             if items.contains(&b) {
                 sum += item_priority(b);
