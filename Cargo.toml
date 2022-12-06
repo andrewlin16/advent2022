@@ -50,3 +50,7 @@ path = "src/5b.rs"
 [[bin]]
 name = "6a"
 path = "src/6a.rs"
+
+[[bin]]
+name = "6b"
+path = "src/6b.rs"
