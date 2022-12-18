@@ -66,6 +66,7 @@ fn main() {
         flow_rate: 0,
         opened: HashSet::new(),
     }];
+    let mut dist_memo: HashMap<(String, String), u8> = HashMap::new();
 
     while !search.is_empty() {
         let state = &search.pop().unwrap();
@@ -75,6 +76,27 @@ fn main() {
             .difference(&state.opened)
             .map(|s| s.to_string())
             .collect();
+
+        target_valves.retain(|target_valve| {
+            let key = (state.valve.clone(), target_valve.clone());
+            if let Some(&dist) = dist_memo.get(&key) {
+                let new_time = state.time + dist;
+                if new_time <= 30 {
+                    let mut new_opened = state.opened.clone();
+                    new_opened.insert(target_valve.clone());
+
+                    search.push(SearchState {
+                        time: new_time,
+                        valve: target_valve.clone(),
+                        pressure: state.pressure + state.flow_rate * dist as u32,
+                        flow_rate: state.flow_rate + valves.get(target_valve).unwrap().flow,
+                        opened: new_opened,
+                    });
+                }
+                return false;
+            }
+            return true;
+        });
 
         let mut target_search = VecDeque::from([TargetSearchState {
             valve: state.valve.clone(),
@@ -103,6 +125,8 @@ fn main() {
                     flow_rate: state.flow_rate + cur_valve.flow,
                     opened: new_opened,
                 });
+                dist_memo.insert((state.valve.clone(), v.clone()), time_taken as u8);
+                dist_memo.insert((v.clone(), state.valve.clone()), time_taken as u8);
 
                 target_valves.remove(&target_state.valve);
             }
