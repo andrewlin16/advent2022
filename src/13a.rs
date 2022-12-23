@@ -4,7 +4,6 @@ use std::io;
 use std::rc::Rc;
 use std::vec::Vec;
 
-#[derive(Debug)]
 enum PacketValue {
     List(Vec<Rc<PacketValue>>),
     Integer(u32),
