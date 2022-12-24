@@ -74,7 +74,6 @@ fn main() {
         }
 
         // Exhausted all sensors, must have found the uncovered point.
-        eprintln!("{:?}", test_loc);
         println!("{}", 4000000 * test_loc.0 as u64 + test_loc.1 as u64);
         return;
     }

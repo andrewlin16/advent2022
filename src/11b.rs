@@ -131,8 +131,6 @@ fn main() {
         }
     }
 
-    eprintln!("{}", modulo);
-
     // Run rounds on monkeys.
     for _ in 0..10000 {
         for c in &monkeys {
