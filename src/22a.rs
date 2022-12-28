@@ -165,7 +165,7 @@ fn main() {
     // Trace through path.
     let mut pos = (
         1,
-        col_bounds.get(&1).expect("bound should exist for row 1").0,
+        row_bounds.get(&1).expect("bound should exist for row 1").0,
     );
     let mut dir = FacingDirection::Right;
 
