@@ -83,7 +83,7 @@ fn main() {
             if state == start {
                 next_states.insert(start);
                 let enter_state = (start.0 + 1, start.1);
-                if blizzard_map[enter_state.0][enter_state.1].is_free() {
+                if blizzard_map[enter_state.0 - 1][enter_state.1 - 1].is_free() {
                     next_states.insert(enter_state);
                 }
                 continue 'expand_loop;
